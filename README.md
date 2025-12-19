@@ -32,11 +32,11 @@
     1. javac Main.java
     2. Run the program: java Main
 
-# Example Data Format (students.txt)
+### Example Data Format (students.txt)
  - 1,Elena Smith,3.2
  - 2,Ana Smith,3.5
 
-# Future Improvements
+### Future Improvements
  - Update student information
  - Search student by ID
  - GPA filtering
