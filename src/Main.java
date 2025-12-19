@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
         StudentService service = new StudentService();
         Scanner scanner = new Scanner(System.in);
 
@@ -13,22 +15,31 @@ public class Main {
             System.out.println("4. Exit");
             System.out.print("Choose option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+                continue;
+            }
 
             switch (choice) {
+
                 case 1:
-                    System.out.print("Enter ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
+                    try {
+                        System.out.print("Enter ID: ");
+                        int id = Integer.parseInt(scanner.nextLine());
 
-                    System.out.print("Enter name: ");
-                    String name = scanner.nextLine();
+                        System.out.print("Enter name: ");
+                        String name = scanner.nextLine();
 
-                    System.out.print("Enter GPA: ");
-                    double gpa = scanner.nextDouble();
+                        System.out.print("Enter GPA: ");
+                        double gpa = Double.parseDouble(scanner.nextLine());
 
-                    service.addStudent(new Student(id, name, gpa));
+                        service.addStudent(new Student(id, name, gpa));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please try again.");
+                    }
                     break;
 
                 case 2:
@@ -36,9 +47,13 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Enter ID to delete: ");
-                    int deleteId = scanner.nextInt();
-                    service.deleteStudent(deleteId);
+                    try {
+                        System.out.print("Enter ID to delete: ");
+                        int deleteId = Integer.parseInt(scanner.nextLine());
+                        service.deleteStudent(deleteId);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid ID.");
+                    }
                     break;
 
                 case 4:
